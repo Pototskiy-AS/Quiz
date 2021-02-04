@@ -116,6 +116,7 @@ public class SettingsFrame extends JFrame implements ActionListener {
             // сохраняем в файл наш выбор темы
             settings.setTotal_questions(Integer.parseInt(Objects.requireNonNull(questionsCountChoose.getSelectedItem()).toString()));
         }
+        //
         if (e.getSource() == saveButton) {
             // сохраняем в файл наш выбор имени  и го в меню
             frame.dispose();
