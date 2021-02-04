@@ -25,7 +25,7 @@ public class SettingsFrame extends JFrame implements ActionListener {
         frame.setVisible(true);
 
 
-        //определить перечень тем
+        //РѕРїСЂРµРґРµР»РёС‚СЊ РїРµСЂРµС‡РµРЅСЊ С‚РµРј
         String[] themes = {"SPORT", "SCIENCE", "JAVA"};
         themeChoose = new JComboBox<>(themes);
         themeChoose.setBounds(300, 200, 300, 50);
@@ -33,7 +33,7 @@ public class SettingsFrame extends JFrame implements ActionListener {
         themeChoose.setSelectedIndex(0);
         themeChoose.setVisible(true);
 
-        //определить кол-во вопросов
+        //РѕРїСЂРµРґРµР»РёС‚СЊ РєРѕР»-РІРѕ РІРѕРїСЂРѕСЃРѕРІ
         String[] count = {"5", "10", "15"};
         questionsCountChoose = new JComboBox<>(count);
         questionsCountChoose.setBounds(300, 300, 300, 50);
@@ -97,17 +97,17 @@ public class SettingsFrame extends JFrame implements ActionListener {
                 settings.setFileQuestion("D:\\JAVA\\JAVA\\src\\test\\quiz\\questions\\questions.json");
             if (themeChoose.getSelectedItem().equals("SPORT"))
                 settings.setFileQuestion("D:\\JAVA\\JAVA\\src\\test\\quiz\\questions\\questions.json");
-            // сохраняем в файл наш выбор темы
+            // СЃРѕС…СЂР°РЅСЏРµРј РІ С„Р°Р№Р» РЅР°С€ РІС‹Р±РѕСЂ С‚РµРјС‹
         }
         if (e.getSource() == questionsCountChoose) {
-            // сохраняем в файл наш выбор темы
+            // СЃРѕС…СЂР°РЅСЏРµРј РІ С„Р°Р№Р» РЅР°С€ РІС‹Р±РѕСЂ С‚РµРјС‹
             settings.setTotal_questions(Integer.parseInt(Objects.requireNonNull(questionsCountChoose.getSelectedItem()).toString()));
         }
         if (e.getSource() == saveButton) {
-            // сохраняем в файл наш выбор имени  и го в меню
+            // СЃРѕС…СЂР°РЅСЏРµРј РІ С„Р°Р№Р» РЅР°С€ РІС‹Р±РѕСЂ РёРјРµРЅРё  Рё РіРѕ РІ РјРµРЅСЋ
             frame.dispose();
             settings.setName(textField.getText());
-            Settings.settingsWriter(settings); //сохраняем настройки в settings.json
+            Settings.settingsWriter(settings); //СЃРѕС…СЂР°РЅСЏРµРј РЅР°СЃС‚СЂРѕР№РєРё РІ settings.json
             MainMenuFrame mainMenuFrame = new MainMenuFrame();
         }
 
