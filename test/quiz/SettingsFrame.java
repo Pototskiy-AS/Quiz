@@ -11,11 +11,12 @@ public class SettingsFrame extends JFrame implements ActionListener {
     private final Settings settings = new Settings();
     private final JFrame frame = new JFrame();
 
-    private final   JButton saveButton;
-    private final   JTextField textField = new JTextField();
+    private final JButton saveButton;
+    private final JButton noSaveButton;
+    private final JTextField textField = new JTextField();
 
-    private final   JComboBox<? extends String> themeChoose;
-    private final   JComboBox<? extends String> questionsCountChoose;
+    private final JComboBox<? extends String> themeChoose;
+    private final JComboBox<? extends String> questionsCountChoose;
 
     public SettingsFrame() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -76,15 +77,26 @@ public class SettingsFrame extends JFrame implements ActionListener {
         textField.setCaretColor(Color.white);
 
         saveButton = new JButton("Save and exit");
-        saveButton.setBounds(250, 500, 200, 100);
+        saveButton.setBounds(120, 500, 150, 50);
         saveButton.setFont(new Font("Courier", Font.BOLD, 15));
         saveButton.setFocusable(false);
         saveButton.addActionListener(this);
+        saveButton.setBackground(new Color(50, 50, 50));
+        saveButton.setForeground(new Color(219, 206, 206));
+
+        noSaveButton = new JButton("Back");
+        noSaveButton.setBounds(430, 500, 150, 50);
+        noSaveButton.setFont(new Font("Courier", Font.BOLD, 15));
+        noSaveButton.setFocusable(false);
+        noSaveButton.addActionListener(this);
+        noSaveButton.setBackground(new Color(50, 50, 50));
+        noSaveButton.setForeground(new Color(219, 206, 206));
 
         frame.add(textField);
         frame.add(themeChoose);
         frame.add(questionsCountChoose);
         frame.add(saveButton);
+        frame.add(noSaveButton);
 
     }
 
@@ -108,6 +120,12 @@ public class SettingsFrame extends JFrame implements ActionListener {
             // сохраняем в файл наш выбор имени  и го в меню
             frame.dispose();
             settings.setName(textField.getText());
+            Settings.settingsWriter(settings); //сохраняем настройки в settings.json
+            MainMenuFrame mainMenuFrame = new MainMenuFrame();
+        }
+        if (e.getSource() == noSaveButton) {
+            // Домой без сохранения
+            frame.dispose();
             Settings.settingsWriter(settings); //сохраняем настройки в settings.json
             MainMenuFrame mainMenuFrame = new MainMenuFrame();
         }
