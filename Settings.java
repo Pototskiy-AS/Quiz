@@ -16,6 +16,7 @@ public class Settings {
     private int seconds = 10;
     private String fileQuestion = "D:\\JAVA\\JAVA\\src\\test\\quiz\\questions.json";
     private static final File fileSettings = new File("D:\\JAVA\\JAVA\\src\\test\\quiz\\settings.json");
+    private static final File fileScores = new File("D:\\JAVA\\JAVA\\src\\test\\quiz\\score.json");
 
     public Settings(String name, int total_questions) {
         this.name = name;
@@ -25,18 +26,37 @@ public class Settings {
     public Settings() {
     }
 
-    //запись из массива в файл( Будет использоваться для записи очков )
-    public static void jsonWriter(List<Object> questions, File file) {
+
+
+    // запись заработанных очков
+    public static void scoresWriter(List<Scores> scores) {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
         try {
-            objectMapper.writeValue(file, questions);
+            objectMapper.writeValue(fileScores, scores.stream().limit(5).toArray());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    //чтение из файла в массив
+    // чтение заработанных очков
+    public static List<Scores> scoresReader() {
+        byte[] jsonData = new byte[0];
+        try {
+            jsonData = Files.readAllBytes(Paths.get(fileScores.getAbsolutePath()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            return Arrays.asList(objectMapper.readValue(jsonData, Scores[].class));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    //чтение вопросов из файла в массив
     public List<Question> questionReader() {
         byte[] jsonData = new byte[0];
         try {
@@ -52,7 +72,6 @@ public class Settings {
         }
         return null;
     }
-
     //сохранение настроек
     public static void settingsWriter(Settings setting) {
         ObjectMapper objectMapper = new ObjectMapper();
@@ -64,7 +83,7 @@ public class Settings {
         }
     }
 
-    //чтение из файла в массив
+    //чтение настроек из файла
     public static Settings settingsReader() {
         byte[] jsonData = new byte[0];
         try {
