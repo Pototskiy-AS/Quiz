@@ -1,0 +1,21 @@
+[ {
+  "name" : "Вася",
+  "answer" : "Ответ",
+  "score" : 15
+}, {
+  "name" : "Коля",
+  "answer" : "Ответ",
+  "score" : 5
+}, {
+  "name" : "Маша",
+  "answer" : "Ответ",
+  "score" : 10
+}, {
+  "name" : "name",
+  "answer" : "Ответ",
+  "score" : 8
+}, {
+  "name" : "name",
+  "answer" : "Ответ",
+  "score" : 1
+} ]

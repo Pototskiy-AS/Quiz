@@ -4,10 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class RecordsMenuFrame extends JFrame implements ActionListener {
+    List<Scores> scores = Settings.scoresReader();
+
     private final JFrame frame;
-    private String name1, name2, name3, name4, name5, score1, score2, score3, score4, score5;
     private final JButton buttonToMenu = new JButton();
 
     public RecordsMenuFrame() {
@@ -22,11 +24,11 @@ public class RecordsMenuFrame extends JFrame implements ActionListener {
         JLabel header = new JLabel("Records");
 
 
-        JLabel rec1 = new JLabel(name1 + " :                              " + score1);
-        JLabel rec2 = new JLabel(name2 + " :                              " + score2);
-        JLabel rec3 = new JLabel(name3 + " :                              " + score3);
-        JLabel rec4 = new JLabel(name4 + " :                              " + score4);
-        JLabel rec5 = new JLabel(name5 + " :                              " + score5);
+        JLabel rec1 = new JLabel(scores.get(0).getName() + " :                              " + scores.get(0).getScore());
+        JLabel rec2 = new JLabel(scores.get(1).getName() + " :                              " + scores.get(1).getScore());
+        JLabel rec3 = new JLabel(scores.get(2).getName() + " :                              " + scores.get(2).getScore());
+        JLabel rec4 = new JLabel(scores.get(3).getName() + " :                              " + scores.get(3).getScore());
+        JLabel rec5 = new JLabel(scores.get(4).getName() + " :                              " + scores.get(4).getScore());
 
         JLabel[] names = {rec1, rec2, rec3, rec4, rec5};
 
