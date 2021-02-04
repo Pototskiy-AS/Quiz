@@ -1,0 +1,45 @@
+[ {
+  "question" : "Вопрос1",
+  "correctAnswer" : "A",
+  "answerOptions" : [ "Вариант1", "Вариант2", "Вариант3", "Вариант4" ]
+}, {
+  "question" : "Вопрос2",
+  "correctAnswer" : "A",
+  "answerOptions" : [ "Вариант1", "Вариант2", "Вариант3", "Вариант4" ]
+}, {
+  "question" : "Вопрос3",
+  "correctAnswer" : "A",
+  "answerOptions" : [ "Вариант1", "Вариант2", "Вариант3", "Вариант4" ]
+}, {
+  "question" : "Вопрос4",
+  "correctAnswer" : "A",
+  "answerOptions" : [ "Вариант1", "Вариант2", "Вариант3", "Вариант4" ]
+}, {
+  "question" : "Вопрос5",
+  "correctAnswer" : "A",
+  "answerOptions" : [ "Вариант1", "Вариант2", "Вариант3", "Вариант4" ]
+}, {
+  "question" : "Вопрос6",
+  "correctAnswer" : "A",
+  "answerOptions" : [ "Вариант1", "Вариант2", "Вариант3", "Вариант4" ]
+}, {
+  "question" : "Вопрос7",
+  "correctAnswer" : "A",
+  "answerOptions" : [ "Вариант1", "Вариант2", "Вариант3", "Вариант4" ]
+}, {
+  "question" : "Вопрос8",
+  "correctAnswer" : "A",
+  "answerOptions" : [ "Вариант1", "Вариант2", "Вариант3", "Вариант4" ]
+}, {
+  "question" : "Вопрос9",
+  "correctAnswer" : "A",
+  "answerOptions" : [ "Вариант1", "Вариант2", "Вариант3", "Вариант4" ]
+}, {
+  "question" : "Вопрос10",
+  "correctAnswer" : "A",
+  "answerOptions" : [ "Вариант1", "Вариант2", "Вариант3", "Вариант4" ]
+}, {
+  "question" : "Вопрос11",
+  "correctAnswer" : "A",
+  "answerOptions" : [ "Вариант1", "Вариант2", "Вариант3", "Вариант4" ]
+} ]
