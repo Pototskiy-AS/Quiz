@@ -60,7 +60,7 @@ public class SettingsFrame extends JFrame implements ActionListener {
             frame.add(j);
         }
 
-
+//
         text.setBounds(50, 100, 300, 100);
         text2.setBounds(50, 200, 300, 100);
         text3.setBounds(50, 300, 300, 100);
