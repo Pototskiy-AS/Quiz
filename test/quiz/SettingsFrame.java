@@ -99,7 +99,7 @@ public class SettingsFrame extends JFrame implements ActionListener {
         frame.add(noSaveButton);
 
     }
-
+//
 
     @Override
     public void actionPerformed(ActionEvent e) {
