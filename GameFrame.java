@@ -328,5 +328,6 @@ public class GameFrame implements ActionListener {
         frame.add(number_right);
         frame.add(percentage);
 
+        Settings.scoresWriter(new Scores(settings.getName(),"",correct_guesses*100));
     }
 }
