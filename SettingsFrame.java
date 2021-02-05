@@ -11,11 +11,12 @@ public class SettingsFrame extends JFrame implements ActionListener {
     private final Settings settings = new Settings();
     private final JFrame frame = new JFrame();
 
-    private final   JButton saveButton;
-    private final   JTextField textField = new JTextField();
+    private final JButton saveButton;
+    private final JButton noSaveButton;
+    private final JTextField textField = new JTextField();
 
-    private final   JComboBox<? extends String> themeChoose;
-    private final   JComboBox<? extends String> questionsCountChoose;
+    private final JComboBox<? extends String> themeChoose;
+    private final JComboBox<? extends String> questionsCountChoose;
 
     public SettingsFrame() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -26,7 +27,7 @@ public class SettingsFrame extends JFrame implements ActionListener {
         frame.setVisible(true);
 
 
-        //определить перечень тем
+        //РѕРїСЂРµРґРµР»РёС‚СЊ РїРµСЂРµС‡РµРЅСЊ С‚РµРј
         String[] themes = {"SPORT", "SCIENCE", "JAVA"};
         themeChoose = new JComboBox<>(themes);
         themeChoose.setBounds(300, 200, 300, 50);
@@ -34,7 +35,7 @@ public class SettingsFrame extends JFrame implements ActionListener {
         themeChoose.setSelectedIndex(0);
         themeChoose.setVisible(true);
 
-        //определить кол-во вопросов
+        //РѕРїСЂРµРґРµР»РёС‚СЊ РєРѕР»-РІРѕ РІРѕРїСЂРѕСЃРѕРІ
         String[] count = {"5", "10", "15"};
         questionsCountChoose = new JComboBox<>(count);
         questionsCountChoose.setBounds(300, 300, 300, 50);
@@ -59,7 +60,7 @@ public class SettingsFrame extends JFrame implements ActionListener {
             frame.add(j);
         }
 
-
+//
         text.setBounds(50, 100, 300, 100);
         text2.setBounds(50, 200, 300, 100);
         text3.setBounds(50, 300, 300, 100);
@@ -76,18 +77,29 @@ public class SettingsFrame extends JFrame implements ActionListener {
         textField.setCaretColor(Color.white);
 
         saveButton = new JButton("Save and exit");
-        saveButton.setBounds(250, 500, 200, 100);
+        saveButton.setBounds(120, 500, 150, 50);
         saveButton.setFont(new Font("Courier", Font.BOLD, 15));
         saveButton.setFocusable(false);
         saveButton.addActionListener(this);
+        saveButton.setBackground(new Color(50, 50, 50));
+        saveButton.setForeground(new Color(219, 206, 206));
+
+        noSaveButton = new JButton("Back");
+        noSaveButton.setBounds(430, 500, 150, 50);
+        noSaveButton.setFont(new Font("Courier", Font.BOLD, 15));
+        noSaveButton.setFocusable(false);
+        noSaveButton.addActionListener(this);
+        noSaveButton.setBackground(new Color(50, 50, 50));
+        noSaveButton.setForeground(new Color(219, 206, 206));
 
         frame.add(textField);
         frame.add(themeChoose);
         frame.add(questionsCountChoose);
         frame.add(saveButton);
+        frame.add(noSaveButton);
 
     }
-
+//
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -98,21 +110,27 @@ public class SettingsFrame extends JFrame implements ActionListener {
                 settings.setFileQuestion("D:\\JAVA\\JAVA\\src\\test\\quiz\\questions\\questions.json");
             if (themeChoose.getSelectedItem().equals("SPORT"))
                 settings.setFileQuestion("D:\\JAVA\\JAVA\\src\\test\\quiz\\questions\\questions.json");
-            // сохраняем в файл наш выбор темы
+            // СЃРѕС…СЂР°РЅСЏРµРј РІ С„Р°Р№Р» РЅР°С€ РІС‹Р±РѕСЂ С‚РµРјС‹
         }
         if (e.getSource() == questionsCountChoose) {
-            // сохраняем в файл наш выбор темы
+            // СЃРѕС…СЂР°РЅСЏРµРј РІ С„Р°Р№Р» РЅР°С€ РІС‹Р±РѕСЂ С‚РµРјС‹
             settings.setTotal_questions(Integer.parseInt(Objects.requireNonNull(questionsCountChoose.getSelectedItem()).toString()));
         }
+        //df
         if (e.getSource() == saveButton) {
-            // сохраняем в файл наш выбор имени  и го в меню
+            // СЃРѕС…СЂР°РЅСЏРµРј РІ С„Р°Р№Р» РЅР°С€ РІС‹Р±РѕСЂ РёРјРµРЅРё  Рё РіРѕ РІ РјРµРЅСЋ
             frame.dispose();
             settings.setName(textField.getText());
-            Settings.settingsWriter(settings); //сохраняем настройки в settings.json
+            Settings.settingsWriter(settings); //СЃРѕС…СЂР°РЅСЏРµРј РЅР°СЃС‚СЂРѕР№РєРё РІ settings.json
+            MainMenuFrame mainMenuFrame = new MainMenuFrame();
+        }
+        if (e.getSource() == noSaveButton) {
+            // Р”РѕРјРѕР№ Р±РµР· СЃРѕС…СЂР°РЅРµРЅРёСЏ
+            frame.dispose();
+            Settings.settingsWriter(settings); //СЃРѕС…СЂР°РЅСЏРµРј РЅР°СЃС‚СЂРѕР№РєРё РІ settings.json
             MainMenuFrame mainMenuFrame = new MainMenuFrame();
         }
 
     }
 }
-
 
