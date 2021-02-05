@@ -7,8 +7,11 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Settings {
     private String name = "Name";
@@ -26,14 +29,18 @@ public class Settings {
     public Settings() {
     }
 
-
-
     // запись заработанных очков
-    public static void scoresWriter(List<Scores> scores) {
+    public static void scoresWriter(Scores score) {
+        List<Scores> scores = scoresReader();
+        scores.add(score);
+        scores = scores.stream()
+                .sorted((o1, o2) -> o2.getScore()-o1.getScore())
+                .limit(5)
+                .collect(Collectors.toCollection(LinkedList::new));
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
         try {
-            objectMapper.writeValue(fileScores, scores.stream().limit(5).toArray());
+            objectMapper.writeValue(fileScores, scores);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -49,7 +56,9 @@ public class Settings {
         }
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            return Arrays.asList(objectMapper.readValue(jsonData, Scores[].class));
+            return Arrays.stream(objectMapper.readValue(jsonData, Scores[].class))
+                    .limit(5)
+                    .collect(Collectors.toCollection(ArrayList::new));
         } catch (IOException e) {
             e.printStackTrace();
         }
