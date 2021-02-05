@@ -1,11 +1,15 @@
 [ {
+  "name" : "Андрей",
+  "answer" : "",
+  "score" : 500
+}, {
+  "name" : "нпро",
+  "answer" : "",
+  "score" : 200
+}, {
   "name" : "Вася",
   "answer" : "Ответ",
   "score" : 15
-}, {
-  "name" : "Коля",
-  "answer" : "Ответ",
-  "score" : 5
 }, {
   "name" : "Маша",
   "answer" : "Ответ",
@@ -14,8 +18,4 @@
   "name" : "name",
   "answer" : "Ответ",
   "score" : 8
-}, {
-  "name" : "name",
-  "answer" : "Ответ",
-  "score" : 1
 } ]
